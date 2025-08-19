@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../core/config/di/injection_container.dart';
+import 'package:project_boilerplate/app/di.dart' as di;
 import '../../../../../core/shared/commonWidgets/custtoms/custom_image.dart';
 import '../../../../../core/shared/utils/extensions/extensions.dart';
 import '../../../../../generated/assets.gen.dart';
@@ -46,7 +46,7 @@ Widget buildNavItem({
 }) =>
     Expanded(
       child: GestureDetector(
-        onTap: () => sl<NavigationBloc>().add(NavigateToPage(index)),
+        onTap: () => di.sl<NavigationBloc>().add(NavigateToPage(index)),
         // child: Icon(
         //   icon,
         //   color: isActive == true ? AppColors.accentColor : Colors.grey,
@@ -95,7 +95,7 @@ class BottomNavItem extends StatelessWidget {
   Widget build(BuildContext context) => Expanded(
         child: InkWell(
           // onTap: onTap,
-          onTap: () => sl<NavigationBloc>().add(NavigateToPage(index)),
+          onTap: () => di.sl<NavigationBloc>().add(NavigateToPage(index)),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,

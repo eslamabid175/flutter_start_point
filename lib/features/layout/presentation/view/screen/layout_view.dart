@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/config/di/injection_container.dart';
+import '../../../../../app/di.dart' as di;
 import '../../../../../core/shared/commonWidgets/custtoms/appbar.dart';
 import '../../../../../core/shared/theme/app_colors.dart';
 import '../../navigationController/navigation_bloc.dart';
@@ -18,7 +18,7 @@ class LayoutView extends StatefulWidget {
 }
 
 class _LayoutViewState extends State<LayoutView> {
-  final bloc = sl<NavigationBloc>()..add(NavigateToPage(0));
+  final bloc = di.sl<NavigationBloc>()..add(NavigateToPage(0));
 
   @override
   Widget build(BuildContext context) =>
@@ -60,7 +60,7 @@ class _LayoutViewState extends State<LayoutView> {
                   borderRadius: BorderRadius.circular(52.r),
                   onTap: () {
                     state.currentIndex == 2;
-                    sl<NavigationBloc>().add(NavigateToPage(2));
+                    di.sl<NavigationBloc>().add(NavigateToPage(2));
                   },
                   child: Container(
                     height: 56.r,

@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get_it/get_it.dart';
 import 'package:project_boilerplate/app/platform/platform_service.dart';
+import 'package:project_boilerplate/core/shared/theme/cubit/theme_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/layout/presentation/navigationController/navigation_bloc.dart';
+import '../features/settings/presentation/viewModel/settings_bloc.dart';
 
 
 
@@ -16,10 +18,12 @@ Future<void> initGitIt() async {
 
   // External
   await _initExternal();
-
+  _initializeTheme();
   // Features
 //  await _initializeAuthFeature();
   await _initializeLayoutFeature();
+  _initializeSettingsFeature();
+
 }
 
 void _initCoreServices() {
@@ -55,7 +59,19 @@ Future<void> _initExternal() async {
 
 Future<void> _initializeLayoutFeature() async {
   // Navigation Bloc
-  sl.registerFactory<NavigationBloc>(() => NavigationBloc());
+  sl.registerLazySingleton<NavigationBloc>(() => NavigationBloc());
   // sl.registerLazySingleton<NavigationRepository>(() => NavigationRepositoryImpl());
   // sl.registerLazySingleton<NavigationUsecases>(() => NavigationUsecases(sl()));
+}
+
+
+Future<void> _initializeSettingsFeature() async {
+  // Settings Bloc
+  sl.registerFactory<SettingsBloc>(() => SettingsBloc());
+  // sl.registerLazySingleton<SettingsRepository>(() => SettingsRepositoryImpl());
+  // sl.registerLazySingleton<SettingsUsecases>(() => SettingsUsecases(sl()));
+}
+
+Future<void> _initializeTheme() async {
+  sl.registerFactory<ThemeCubit>(() => ThemeCubit());
 }
