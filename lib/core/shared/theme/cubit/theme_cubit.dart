@@ -1,56 +1,25 @@
+// core/shared/theme/cubit/theme_cubit.dart
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'theme_state.dart';
 
-/// Manages the theme state of the application
-class ThemeCubit extends HydratedCubit<ThemeState> {
-  ThemeCubit() : super(const ThemeState());
-
-  /// Changes the theme mode to light
-  void setLightTheme() {
-    emit(state.copyWith(themeMode: ThemeMode.light));
-  }
-
-  /// Changes the theme mode to dark
-  void setDarkTheme() {
-    emit(state.copyWith(themeMode: ThemeMode.dark));
-  }
-
-  /// Changes the theme mode to system
-  void setSystemTheme() {
-    emit(state.copyWith(themeMode: ThemeMode.system));
-  }
-
-  /// Toggles between light and dark theme
-  void toggleTheme() {
-    if (state.themeMode == ThemeMode.light) {
-      setDarkTheme();
-    } else if (state.themeMode == ThemeMode.dark) {
-      setLightTheme();
-    } else {
-      // If system theme, default to light when toggling
-      setLightTheme();
+class ThemeCubit extends Cubit<ThemeState> {
+  ThemeCubit() : super(const ThemeState(themeMode: ThemeMode.system)) {
+    if (kDebugMode) {
+      print('✨ Created: ThemeCubit');
     }
   }
 
-  /// Updates the theme mode
-  void updateThemeMode(ThemeMode themeMode) {
-    emit(state.copyWith(themeMode: themeMode));
+  void toggleTheme() {
+    final newMode = state.themeMode == ThemeMode.light
+        ? ThemeMode.dark
+        : ThemeMode.light;
+    emit(ThemeState(themeMode: newMode));
   }
 
-  /// Toggles Material 3 design
-  void toggleMaterial3() {
-    emit(state.copyWith(useMaterial3: !state.useMaterial3));
+  void setThemeMode(ThemeMode mode) {
+    emit(ThemeState(themeMode: mode));
   }
-
-  /// Checks if the current theme is dark
-  bool get isDarkMode => state.themeMode == ThemeMode.dark;
-
-  /// Persists the theme state
-  @override
-  ThemeState? fromJson(Map<String, dynamic> json) => ThemeState.fromMap(json);
-
-  /// Converts the theme state to JSON for persistence
-  @override
-  Map<String, dynamic>? toJson(ThemeState state) => state.toMap();
 }
