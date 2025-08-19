@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../debug_utils.dart';
+import '../depugging/debug_utils.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override

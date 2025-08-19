@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../debug_utils.dart';
+import '../depugging/debug_utils.dart';
 
 // App Lifecycle Observer
 class AppLifecycleObserver extends WidgetsBindingObserver {

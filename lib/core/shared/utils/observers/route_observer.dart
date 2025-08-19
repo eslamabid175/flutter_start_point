@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // Global Route Observer Instance
 
-import '../debug_utils.dart';final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
+import '../depugging/debug_utils.dart';final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
 
 // Custom Route Observer with Analytics
 class AppRouteObserver extends RouteObserver<PageRoute<dynamic>> {

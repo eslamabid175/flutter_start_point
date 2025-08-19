@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/config/phoneix.dart';
+import 'phoneix.dart';
 
 
 /// Error screen widget shown when runtime errors occur

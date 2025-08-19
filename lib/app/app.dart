@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/config/phoneix.dart';
-import '../core/config/unfucs.dart';
+import 'app_errors_crashes/phoneix.dart';
+import 'app_errors_crashes/unfucs.dart';
 import '../core/shared/theme/app_theme.dart';
 import '../core/shared/theme/cubit/theme_cubit.dart';
 import '../core/shared/theme/cubit/theme_state.dart';
-import '../core/shared/utils/debug_utils.dart';
+import '../core/shared/utils/depugging/debug_utils.dart';
 import '../core/shared/utils/observers/route_observer.dart';
 import 'app_errors_crashes/error_widgets.dart';
 import 'routing/app_routes.dart';

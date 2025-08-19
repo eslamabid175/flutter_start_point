@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../core/shared/utils/debug_utils.dart';
+import '../core/shared/utils/depugging/debug_utils.dart';
 import '../core/shared/utils/observers/bloc_observer.dart';
 import 'di.dart' as di;
 import 'platform/platform_service.dart';

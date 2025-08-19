@@ -6,7 +6,6 @@ import 'package:project_boilerplate/app/platform/platform_service.dart';
 import 'package:project_boilerplate/core/shared/theme/cubit/theme_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/layout/presentation/navigationController/navigation_bloc.dart';
-import '../features/settings/presentation/viewModel/settings_bloc.dart';
 
 
 
@@ -22,7 +21,6 @@ Future<void> initGitIt() async {
   // Features
 //  await _initializeAuthFeature();
   await _initializeLayoutFeature();
-  _initializeSettingsFeature();
 
 }
 
@@ -65,12 +63,7 @@ Future<void> _initializeLayoutFeature() async {
 }
 
 
-Future<void> _initializeSettingsFeature() async {
-  // Settings Bloc
-  sl.registerFactory<SettingsBloc>(() => SettingsBloc());
-  // sl.registerLazySingleton<SettingsRepository>(() => SettingsRepositoryImpl());
-  // sl.registerLazySingleton<SettingsUsecases>(() => SettingsUsecases(sl()));
-}
+
 
 Future<void> _initializeTheme() async {
   sl.registerFactory<ThemeCubit>(() => ThemeCubit());

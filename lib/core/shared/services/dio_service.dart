@@ -7,7 +7,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import '../commonWidgets/custtoms/loading_widget.dart';
 import '../costants/app_strings.dart';
-import '../utils/debug_utils.dart';
+import '../utils/depugging/debug_utils.dart';
 import '../utils/extensions/context_extensions.dart';
 import 'storage_service.dart';
 
