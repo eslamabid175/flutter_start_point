@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_errors_crashes/phoneix.dart';
 import 'app_errors_crashes/unfucs.dart';
-import '../core/shared/theme/app_theme.dart';
 import '../core/shared/theme/cubit/theme_cubit.dart';
 import '../core/shared/theme/cubit/theme_state.dart';
 import '../core/shared/utils/depugging/debug_utils.dart';
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ThemeCubit(),
+      create: (context) => ThemeCubit()..loadTheme(),
       child: const _AppView(),
     );
   }
@@ -56,9 +55,9 @@ class _MaterialApp extends StatelessWidget {
     return MaterialApp(
       title: 'Aman',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme(),
-      darkTheme: AppTheme.darkTheme(),
-      themeMode: themeState.themeMode,
+      theme: themeState.lightTheme,
+      darkTheme: themeState.darkTheme,
+      themeMode: themeState.materialThemeMode,
       navigatorObservers: [
         AppRouteObserver(),
         routeObserver,
@@ -128,3 +127,37 @@ class _AppWrapperState extends State<_AppWrapper> {
     );
   }
 }
+
+///// Theme switcher button
+// IconButton(
+//   icon: Icon(_getThemeIcon(context)),
+//   onPressed: () {
+//     context.read<ThemeCubit>().toggleTheme();
+//   },
+// )
+//
+// // Helper method for the icon
+// IconData _getThemeIcon(BuildContext context) {
+//   final themeMode = context.watch<ThemeCubit>().state.themeMode;
+//   return themeMode.icon; // Using the extension we created
+// }
+//
+// // Or a more detailed theme selector
+// PopupMenuButton<AppThemeMode>(
+//   icon: Icon(context.watch<ThemeCubit>().state.themeMode.icon),
+//   onSelected: (mode) {
+//     context.read<ThemeCubit>().setTheme(mode);
+//   },
+//   itemBuilder: (context) => AppThemeMode.values.map((mode) {
+//     return PopupMenuItem(
+//       value: mode,
+//       child: Row(
+//         children: [
+//           Icon(mode.icon),
+//           const SizedBox(width: 12),
+//           Text(mode.displayName),
+//         ],
+//       ),
+//     );
+//   }).toList(),
+// )

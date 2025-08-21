@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../costants/app_dimensions.dart';
+import '../../theme/spacing/app_dimensions.dart';
 import '../../utils/extensions/context_extensions.dart';
 
 class LoadingWidget extends StatelessWidget {

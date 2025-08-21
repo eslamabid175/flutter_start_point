@@ -1,7 +1,7 @@
 // main.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:device_preview/device_preview.dart';
 import 'app/app.dart';
 import 'app/app_errors_crashes/crash_reporter.dart';
 import 'app/app_errors_crashes/error_widgets.dart';
@@ -13,7 +13,12 @@ void main() async {
   await CrashReporter.initialize(() async {
     try {
       await AppInitializer.initialize();
-      runApp(const MyApp());
+      runApp(DevicePreview(
+          enabled: !kReleaseMode,
+          builder: (context) {
+          return MyApp();
+        }
+      ));
     } catch (error, stackTrace) {
       if (kDebugMode) {
         Console.printError('Failed to initialize app: $error');

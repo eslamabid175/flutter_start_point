@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
-import 'package:project_boilerplate/core/shared/costants/app_color.dart';
+
+import '../../theme/colors/app_colors.dart';
 
 
 extension ContextExtensions on BuildContext {
@@ -238,7 +239,7 @@ extension ContextExtensions on BuildContext {
 
   ScaffoldState? get scaffold => Scaffold.maybeOf(this);
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
-  AppBarTheme get appBarTheme => theme.appBarTheme;
+ // AppBarTheme get appBarTheme => theme.appBarTheme;
 
   // Open drawer
   void openDrawer() => scaffold?.openDrawer();
